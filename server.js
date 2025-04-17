@@ -8,7 +8,14 @@ app.use(cors());
 app.use(express.static('public'));
 
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+    cors: {
+        origin: process.env.NODE_ENV === 'production' 
+            ? process.env.DOMAIN || '*'  // Use environment variable or allow all in production
+            : 'http://localhost:3000',
+        methods: ["GET", "POST"]
+    }
+});
 
 const users = new Map(); // socketId -> {username, partnerId}
 const waitingUsers = []; // array of socket IDs

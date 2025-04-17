@@ -32,7 +32,7 @@ function initializeSocket() {
         socket.disconnect();
     }
 
-    socket = io('http://localhost:3000');
+    socket = io(window.location.origin);
 
     socket.on('connect', () => {
         console.log('Connected to server');
