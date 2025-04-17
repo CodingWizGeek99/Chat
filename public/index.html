@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="login-screen" class="screen">
+            <h1>Random Chat</h1>
+            <div class="login-form">
+                <label for="username" class="name-label">Name:</label>
+                <input type="text" id="username" value="Stranger" placeholder="Enter your name" maxlength="20">
+                <button onclick="joinChat()">Start Chatting</button>
+            </div>
+        </div>
+
+        <div id="chat-screen" class="screen hidden">
+            <div class="chat-header">
+                <div id="status">Connecting...</div>
+                <button id="new-partner" onclick="findNewPartner()">Next Stranger</button>
+            </div>
+            <div id="messages" class="messages"></div>
+            <div class="input-area">
+                <input type="text" id="message-input" placeholder="Type your message..." maxlength="500">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html> 
